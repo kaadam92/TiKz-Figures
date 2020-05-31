@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+\draw
+  (0,0) coordinate (STAR)
+  
+  (3,0) coordinate (ALPHA)
+  (0,3) coordinate (BETA)
+  
+  ({3*cos(30)},{3*sin(30)}) coordinate (d)
+  ({3*cos(120)},{3*sin(120)}) coordinate (q)
+  ;
+  
+  \draw[thick, ->] (STAR) -- (ALPHA) node[anchor=west] {$\alpha$};
+  \draw[thick, ->] (STAR) -- (BETA) node[anchor=south] {$\beta$};
+  
+  \draw[dashed, thick, ->] (STAR) -- (d) node[anchor=west] {$d$};
+  \draw[dashed, thick, ->] (STAR) -- (q) node[anchor=south east] {$q$};
+  
+  \pic [draw, angle radius=8mm, angle eccentricity=0.6,"$\ang{90}$"] {angle = ALPHA--STAR--BETA};
+  \pic [draw,->, angle radius=16mm, angle eccentricity=1.2,"$\theta$"] {angle = ALPHA--STAR--d};
+
+  
+\end{tikzpicture}

@@ -1,0 +1,22 @@
+\begin{center}
+\newcommand{\trianglescale}{10}
+\begin{circuitikz} 
+  % rotor circuit
+  
+  \draw
+  (0,0) coordinate (IN_B)
+  ({3*cos(30)},{3*sin(30)+3}) coordinate (IN_A)
+  ({2*3*cos(30)},0) coordinate (IN_C)
+  
+  (0,0) coordinate (IN_B_R)
+  ({3*cos(30)},{3*sin(30)+3}) coordinate (IN_A_R)
+  ({2*3*cos(30)},0) coordinate (IN_C_R)
+  
+  ({3*cos(30)},{3*sin(30)}) coordinate (STAR)
+  
+  (IN_B) node[anchor=north east] {$U_B$} to[short, o-, f=$I_B$] ++({0.5*cos(30)},{0.5*sin(30)}) to [R, l=$R_{S}B$] ++({cos(30)},{sin(30)}) to [L, l=$L_{S}B$]  (STAR)
+  (IN_C) node[anchor=north west] {$U_C$} to[short, o-, f^=$I_C$] ++({-0.5*cos(30)},{0.5*sin(30)}) to [R, l_=$R_{S}C$] ++({-cos(30)},{sin(30)}) to [L, l_=$L_{S}C$] (STAR)
+  (IN_A) node[anchor=south] {$U_A$}  to[short, o-, f=$I_A$] ++(0,-0.5) to [R, l=$R_{S}A$] ++(0,-1) to [L, l=$L_{S}A$] (STAR) to [short,*-] (STAR)
+  ;
+\end{circuitikz}
+\end{center}

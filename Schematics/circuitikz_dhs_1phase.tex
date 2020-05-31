@@ -1,0 +1,59 @@
+\begin{center}
+    \begin{circuitikz}
+    \draw
+    % DC sources
+    (-1,0) to [short, o-] (0,0)
+    (-1,5) to [short, o-] (0,5)
+    (0,0)
+        to[C, l=\SI{800}{\volt}] ++(0,5) coordinate (Vcc)
+    ++(2,0) coordinate (NE)
+
+    % Switches and diodes for leg a
+    ++(0,-1) node [nigfete,scale=1.2,name=igbt1] {} node[anchor=west] {Q1}
+    ++(0,-3) node [nigfete,scale=1.2,name=igbt4] {Q2}
+    (igbt1.E)++(0,0.1) -- ++(0.3,0) to[D] ($(igbt1.C)+(0.3,-0.1)$)
+      -- ++(-0.3,0)
+    (igbt4.E)++(0,0.1) -- ++(0.3,0) to[D] ($(igbt4.C)+(0.3,-0.1)$)
+      -- ++(-0.3,0)
+    % --Switch connections for leg a
+    (Vcc) -| (igbt1.C)
+    (igbt1.E) -- (igbt4.C)
+    (igbt4.E) |- (0,0)
+
+        % Switches and diodes for leg b
+    (NE)++(3,0)
+    ++(0,-1) node [nigfete,scale=1.2,name=igbt3] {Q3}
+    ++(0,-3) node [nigfete,scale=1.2,name=igbt2] {Q4}
+    (igbt3.E)++(0,0.1) -- ++(0.3,0) to[D] ($(igbt3.C)+(0.3,-0.1)$)
+      -- ++(-0.3,0)
+    (igbt2.E)++(0,0.1) -- ++(0.3,0) to[D] ($(igbt2.C)+(0.3,-0.1)$)
+      -- ++(-0.3,0)
+    % --Switch connections for leg b
+    (Vcc) -| (igbt3.C)
+    (igbt3.E) -- (igbt2.C)
+    (igbt2.E) |- (0,0)
+    
+        % Inductor, grid, and the return path
+    (2,3)
+        to[short, *-] ++(3,0)
+        to[short, f=$I_{L1}$] ++(2,0)
+        to[L, l=\SI{720}{\milli\henry}] ++(1.2,0)
+        to[short] ++(1.2,0) coordinate (Lright)
+        to[short] ++(0.5,0) to[short] ++(0.5,-0.5)
+    (5,2)
+        to[short, *-, f=$I_{L2}$] ++(2,0)
+        to[L, l=\SI{720}{\milli\henry}] ++(1.2,0)
+        to[short] ++(1.2,0) coordinate (Lright)
+        to[short] ++(0.5,0) to[short] ++(0.5,0.5)
+        to[short, *-] ++(1,0) coordinate (OUT) 
+        
+    to[C, l=\SI{300}{\micro\farad}, f>_=$I_C$] ++(0,-2.5) coordinate (OUT2) -| (0,0)
+    
+    (OUT) to[short, -o, f=$I_{OUT}$] ++(1.5,0) coordinate (OUT_1)
+    (OUT2) to[short, -o] ++(1.5,0) coordinate (OUT2_1)
+    (-1,5) to[open, v=$U_{DC}$] (-1,0)
+    
+    (OUT_1) to [open, v^=$U_{inv}$] (OUT2_1)
+    ;
+\end{circuitikz}
+\end{center}

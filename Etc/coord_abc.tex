@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+\draw
+  (0,0) coordinate (STAR)
+  
+  (3,0) coordinate (IN_A)
+  ({3*cos(120)},{3*sin(120)}) coordinate (IN_B)
+  ({3*cos(240)},{3*sin(240)}) coordinate (IN_C)
+  ;
+  \draw[thick, ->] (STAR) -- (IN_A) node[anchor=west] {A};
+  \draw[thick, ->] (STAR) -- (IN_B) node[anchor=south east] {B};
+  \draw[thick, ->] (STAR) -- (IN_C) node[anchor=north east] {C};
+  
+  \draw ({cos(120)},{sin(120)}) coordinate (C) -- (0,0) coordinate (B) -- (1,0) coordinate (A);
+  \pic [draw,
+      angle radius=8mm, angle eccentricity=0.6,
+      "$\ang{120}$"] {angle};
+
+  
+\end{tikzpicture}

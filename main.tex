@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{angles, quotes}
+\usepackage[siunitx, europeanresistors, americaninductors, voltage shift=0.5]{circuitikz}
+\usepackage{schemabloc}
+
+\title{Ticks test}
+\author{David Kiss}
+\date{April 2020}
+
+\ctikzset{bipoles/thickness=1}
+\ctikzset{bipoles/length=0.8cm}
+\ctikzset{bipoles/diode/height=.375}
+\ctikzset{bipoles/diode/width=.3}
+\ctikzset{tripoles/thyristor/height=.8}
+\ctikzset{tripoles/thyristor/width=1}
+\ctikzset{bipoles/vsourceam/height/.initial=.7}
+\ctikzset{bipoles/vsourceam/width/.initial=.7}
+\tikzstyle{every node}=[font=\small]
+\tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
+
+\begin{document}
+
+\maketitle
+
+\section{Tests}
+\paragraph{}The goal of this document is to test out the tikz package
+
+\vspace{1cm}
+\input{Tests/test_1}
+
+\newpage
+\section{example2}
+\input{Tests/test_2}
+
+\section{Example 3}
+\input{Schematics/circuitikz_test1}
+
+\section{Example 4 - Motor}
+\input{Schematics/circuitikz_motor_equivalent}
+
+\section{Example 5 - RLC}
+\input{Schematics/circuitikz_rlc}
+
+\section{DHS 1 Phase}
+\input{Schematics/circuitikz_dhs_1phase}
+
+\section{P-HIL connection}
+\input{Schematics/circuitikz_phil_coupling}
+
+
+\section{Motor star connection}
+\input{Schematics/circuitikz_motor_stator_equivalent}
+
+
+\section{Motor Interiror}
+\input{Etc/motor_interior_inside}
+
+
+\section{Motor Exterior}
+\input{Etc/motor_exterior}
+
+
+\section{Graph}
+
+\input{Graphs/graph_ex1}
+
+\section{Coordinate system}
+\input{Etc/coord_abc}
+
+\section{Coordinate system}
+\input{Etc/coord_ab_dq}
+
+
+\section{Scheme}
+\input{Block_diagrams/blockdiagram_ex1}
+
+
+\section{HIL- schema}
+\input{Block_diagrams/block_diagram_hil}
+
+
+\section{P-HIL}
+\input{Block_diagrams/block_diagram_phil}
+
+
+\section{Test Bench}
+\input{Block_diagrams/blockdiagram_motor_dyno}
+
+
+\section{Test Setup}
+\input{Block_diagrams/block_diagram_pp2020_test_setup}
+
+
+\end{document}

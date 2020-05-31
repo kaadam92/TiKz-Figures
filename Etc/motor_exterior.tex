@@ -1,0 +1,18 @@
+\begin{center}
+\begin{tikzpicture} 
+
+  \filldraw[color=black!25, fill=black!5](0,0) circle [radius = 1.75cm];
+  \filldraw[color=black, fill=black](0,0) circle [radius = 0.1cm];
+  
+  \foreach \y in {0,90,180,270}{
+     \path[draw=blue!75, fill=blue!50]
+     ({1.75*cos(\y+20)}, {1.75*sin(\y+20)}) -- ({2*cos(\y+20)}, {2*sin(\y+20)})
+    arc [radius = 2, start angle = \y + 20, end angle = \y - 20]
+    ({2*cos(\y-20)}, {2*sin(\y-20)}) -- ({1.75*cos(\y-20)}, {1.75*sin(\y-20)})
+    arc [radius = 1.75, start angle = \y - 20, end angle = \y + 20]
+    ;
+    }
+ 
+  
+\end{tikzpicture}
+\end{center}

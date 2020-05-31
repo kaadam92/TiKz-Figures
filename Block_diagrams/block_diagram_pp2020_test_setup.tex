@@ -1,0 +1,68 @@
+\begin{tikzpicture}[>=stealth,
+  block/.style={
+    draw,
+    rectangle,
+    rounded corners,
+    minimum width=2cm,
+    minimum height=1cm,
+    text width=2cm,
+    anchor=center,
+    align=center
+  },
+    optional/.style={
+    draw,
+    rectangle,
+    rounded corners,
+    minimum width=1.5cm,
+    minimum height=1cm,
+    text width=2cm,
+    anchor=center,
+    align=center,
+    color = gray,
+  },
+    circular/.style={
+    draw,
+    circle,
+    rounded corners,
+    minimum width=0.25cm,
+    minimum height=0.25cm,
+    text width=1cm,
+    minimum size=#1,
+    anchor=center,
+    align=center,
+    inner sep=0pt, 
+    outer sep=0pt,
+    color = black,
+  }]
+  %coordinates
+  \coordinate (orig)   at (0,0);
+  \coordinate (LLA)    at (-3,0);
+  \coordinate (LLB)    at (3,0);
+  \coordinate (LLC)    at (3,-2.5);
+  
+  \coordinate (LM1) at   (-0.75,0);
+  \coordinate (LM2) at   (0.75,0);
+  
+  \coordinate (LLD)    at (0,-3);
+
+  %nodestyle
+
+
+  %nodes
+  \node[block] (A) at (LLA) {DUT};
+  \node[block] (B) at (LLB) {Power-HIL};
+  \node[block] (C) at (LLC) {Reference\\Motor model};
+  
+
+  \draw[->] ($(A.0) + (0, 0)$) -- node[above] {Control signals} ($(B.180) + (0 , 0)$);
+  \draw[->] (orig) -- (0,-2.5) -- ($(C.180) + (0 , 0)$);
+  \filldraw(orig) circle (0.05);
+  
+  \draw[->] (B.0) -- ($(B.0) + (3, 0)$);
+  \draw[->] ($(B.0) + (1.5, 0)$) -- ($(B.0) + (1.5, 1.5)$) -- (0 ,1.5) node[above] {Feedback signals} -- ($(A.90) + (0, 1)$)   -- (A.90);
+  
+  \filldraw($(B.0) + (1.5, 0)$) circle (0.05);
+  
+  \draw[->] (C.0) -- node[above] {Reference signals} ($(C.0) + (3, 0)$);
+
+\end{tikzpicture}

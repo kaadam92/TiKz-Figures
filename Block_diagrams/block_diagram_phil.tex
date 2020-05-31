@@ -1,0 +1,71 @@
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[>=stealth,
+  block/.style={
+    draw,
+    rectangle,
+    rounded corners,
+    minimum width=2cm,
+    minimum height=2cm,
+    text width=2cm,
+    anchor=center,
+    align=center
+  },
+    optional/.style={
+    draw,
+    rectangle,
+    rounded corners,
+    minimum width=1.5cm,
+    minimum height=1cm,
+    text width=2cm,
+    anchor=center,
+    align=center,
+    color = gray,
+  }]
+  %coordinates
+  \coordinate (orig)   at (0,0);
+  \coordinate (LLA)    at (-5,0);
+  \coordinate (LLB)    at (5,0);
+  
+  \coordinate (LLD)    at (0,-3);
+
+  %nodestyle
+
+
+  %nodes
+  \node[block] (A) at (LLA) {DUT\\Control ECU};
+  \node[block] (A2) at ($(LLA) + (2.25,0)$) {DUT\\Power\\Stage};
+  \node[block] (B) at (LLB) {Real-Time\\Simulator};
+  \node[block] (B2) at ($(LLB) - (2.25,0)$) {Power\\Amplifier};
+  
+  
+  
+      \draw[draw, dashed, color=gray!50] (0,1.5) -- (0,-1.5);
+  %edges
+  
+  \node[draw, rectangle, rounded corners, minimum height = 1.5cm, anchor=center,
+    align=center] (C) at (orig) {Coupling\\Circuit};
+    
+    \node[optional] (D) at (LLD) {DC/DC};
+
+    \draw[-, line width = 2pt] ($(A2.0) + (0, 0.3)$) -- node[above] {} ($(C.180) + (0 , 0.3)$);
+    \draw[-, line width = 2pt] ($(A2.0) - (0, 0.3)$) -- node[above] {} ($(C.180) - (0 , 0.3)$);
+    \draw[-, line width = 2pt] ($(A2.0) + (0, 0)$) -- node[above] {} ($(C.180) + (0 , 0)$);
+
+    \draw[-, line width = 2pt] ($(C.0) + (0, 0.3)$) -- node[above] {} ($(B2.180) + (0 , 0.3)$);
+    \draw[-, line width = 2pt] ($(C.0) - (0, 0.3)$) -- node[above] {} ($(B2.180) - (0 , 0.3)$);
+    \draw[-, line width = 2pt] ($(C.0) + (0, 0)$) -- node[above] {} ($(B2.180) + (0 , 0)$);
+    
+    \draw[-, line width = 2pt] (D.0) -- node[above] {} (2.75,-3)  -- ($(B2.270) + (0 , 0)$);
+    
+    \draw[-, line width = 2pt] (D.180) -- node[above] {} (-2.75,-3)  -- ($(A2.270) + (0 , 0)$);
+    
+    \draw[->, line width = 1pt] (B.270) -- (5,-4.5)  -- node[above] {Simulated Feedback Signals} (-5,-4.5) --  ($(A.270) + (0 , 0)$);
+
+    \draw[line width = 2pt, ->] (-1,-1.5) arc (30:300:0.5) node[above right] {Power Flow};
+
+
+
+\end{tikzpicture}
+\end{center}
+\end{figure}

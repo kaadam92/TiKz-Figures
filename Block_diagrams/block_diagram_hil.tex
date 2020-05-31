@@ -1,0 +1,34 @@
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[>=stealth,
+  block/.style={
+    draw,
+    rectangle,
+    rounded corners,
+    minimum width=2cm,
+    minimum height=2cm,
+    text width=2cm,
+    anchor=center,
+    align=center
+  }]
+  %coordinates
+  \coordinate (orig)   at (0,0);
+  \coordinate (LLA)    at (-3,0);
+  \coordinate (LLB)    at (3,0);
+
+  %nodestyle
+
+  %nodes
+  \node[block] (A) at (LLA) {DUT\\Control ECU};
+  \node[block] (B) at (LLB) {Real-Time\\Simulator};
+
+    \draw[draw, dashed, color=gray!50] (0,1.5) -- (0,-1.5);
+  %edges
+
+  \draw[->] ($(A.0) + (0, 0.5)$) -- node[above] {Control signals} ($(B.180) + (0 , 0.5)$);
+  \draw[<-] ($(A.0) + (0, -0.5)$) -- node[below] {Feedback signals} ($(B.180) + (0 , -0.5)$);
+
+
+\end{tikzpicture}
+\end{center}
+\end{figure}
